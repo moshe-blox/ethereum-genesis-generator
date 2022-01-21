@@ -7,7 +7,7 @@ eth1_premine:
   "m/44'/60'/0'/0/4": 10000000ETH
   "m/44'/60'/0'/0/5": 10000000ETH
 eth1_premine_addrs: {}
-chain_id: 1337331
+chain_id: 5
 deposit_contract_address: "0x4242424242424242424242424242424242424242"
 eth1_genesis_timestamp: 0
 terminal_total_difficulty: 60000000
