@@ -12,8 +12,6 @@ gen_el_config(){
         mkdir -p /data/el
         envsubst < /config/el/genesis-config.yaml > $tmp_dir/genesis-config.yaml
         python3 /apps/el-gen/genesis_geth.py $tmp_dir/genesis-config.yaml      > /data/el/geth.json
-        python3 /apps/el-gen/genesis_chainspec.py $tmp_dir/genesis-config.yaml > /data/el/chainspec.json
-        python3 /apps/el-gen/genesis_besu.py $tmp_dir/genesis-config.yaml > /data/el/besu.json
     else
         echo "el genesis already exists. skipping generation..."
     fi
@@ -28,8 +26,11 @@ gen_cl_config(){
         # Replace environment vars in files
         envsubst < /config/cl/config.yaml > /data/cl/config.yaml
         envsubst < /config/cl/mnemonics.yaml > $tmp_dir/mnemonics.yaml
+        # Fetch TTD from EL config
+        TTD="$(grep "terminalTotalDifficulty" /data/el/geth.json | awk -F": " '{ print $2 }' | tr -d ',')"
         # Replace MIN_GENESIS_TIME on config
         sed -i "s/^MIN_GENESIS_TIME:.*/MIN_GENESIS_TIME: ${CL_TIMESTAMP}/" /data/cl/config.yaml
+        sed -i "s/^TERMINAL_TOTAL_DIFFICULTY:.*/TERMINAL_TOTAL_DIFFICULTY: ${TTD}/" /data/cl/config.yaml
         # Create deposit_contract.txt and deploy_block.txt
         grep DEPOSIT_CONTRACT_ADDRESS /data/cl/config.yaml | cut -d " " -f2 > /data/cl/deposit_contract.txt
         echo "0" > /data/cl/deploy_block.txt
