@@ -5,7 +5,7 @@ CONFIG_NAME: testnet # needs to exist because of Prysm. Otherwise it conflicts w
 # Genesis
 # ---------------------------------------------------------------
 # `2**14` (= 16,384)
-MIN_GENESIS_ACTIVE_VALIDATOR_COUNT: 16384
+MIN_GENESIS_ACTIVE_VALIDATOR_COUNT: 196
 # Mar-01-2021 08:53:32 AM +UTC
 # This is an invalid valid and should be updated when you create the genesis
 MIN_GENESIS_TIME: 0
@@ -21,10 +21,10 @@ GENESIS_DELAY: 120
 
 # Altair
 ALTAIR_FORK_VERSION: 0x01001020
-ALTAIR_FORK_EPOCH: 36660
+ALTAIR_FORK_EPOCH: 5
 # Merge
 BELLATRIX_FORK_VERSION: 0x02001020
-BELLATRIX_FORK_EPOCH: 18446744073709551615
+BELLATRIX_FORK_EPOCH: 10
 # Sharding
 SHARDING_FORK_VERSION: 0x03001020
 SHARDING_FORK_EPOCH: 18446744073709551615

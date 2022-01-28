@@ -14,8 +14,4 @@ terminal_total_difficulty: 60000000
 mergeForkBlock: 100
 
 clique:
-  enabled: true
-  signers:
-    - 36d56343bc308d4ffaac2f793d121aba905fa6cc
-    - 5e762d4a3847cadaf40a4b0c39574b0ff6698c78
-    - 15d7acc1019fdf8ab4f0f7bd31ec1487ecb5a2bd
+  enabled: false
