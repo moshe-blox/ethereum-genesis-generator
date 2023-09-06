@@ -5,7 +5,7 @@ RUN git clone https://github.com/protolambda/eth2-testnet-genesis.git \
     && go install . \
     && go install github.com/protolambda/eth2-val-tools@latest
 
-FROM debian:latest
+FROM debian:11.5
 WORKDIR /work
 VOLUME ["/config", "/data"]
 EXPOSE 8000/tcp
